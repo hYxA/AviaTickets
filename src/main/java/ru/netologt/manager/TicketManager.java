@@ -2,10 +2,8 @@ package ru.netologt.manager;
 
 import ru.netology.domain.Ticket;
 import ru.netology.repository.TicketRepository;
-
 import java.util.Arrays;
 import java.util.Objects;
-
 import static java.lang.System.arraycopy;
 
 public class TicketManager {
