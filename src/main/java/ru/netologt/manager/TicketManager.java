@@ -2,8 +2,10 @@ package ru.netologt.manager;
 
 import ru.netology.domain.Ticket;
 import ru.netology.repository.TicketRepository;
+
 import java.util.Arrays;
 import java.util.Objects;
+
 import static java.lang.System.arraycopy;
 
 public class TicketManager {
@@ -18,18 +20,20 @@ public class TicketManager {
         Ticket[] massiveResult = new Ticket[0];
 
         for (Ticket item : items) {
-            if ((Objects.equals(item.getDepartureAirport(), from)
-                    || Objects.equals(item.getArrivalAirport(), to)) {
-                int length = massiveResult.length + 1;
-                Ticket[] tmp = new Ticket[length];
-                arraycopy(items, 0, tmp, 0, items.length);
-                int lastIndex = tmp.length - 1;
-                tmp[lastIndex] = item;
-                massiveResult = tmp;
-            }
-            Arrays.sort(massiveResult);
+            if (Objects.equals(item.getDepartureAirport(), from))
+                if (Objects.equals(item.getArrivalAirport(), to)) {
+                    int length = massiveResult.length + 1;
+                    Ticket[] tmp = new Ticket[length];
+                    arraycopy(items, 0, tmp, 0, items.length);
+                    int lastIndex = tmp.length - 1;
+                    tmp[lastIndex] = item;
+                    massiveResult = tmp;
+                    Arrays.sort(massiveResult);
+                    return massiveResult;
+                }
+
         }
-        return massiveResult;
+        return null;
     }
 
     public void removeById(int id) {
